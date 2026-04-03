@@ -231,6 +231,13 @@ This configuration follows the **Laravel Actions** pattern (`lorisleiva/laravel-
 
 No traditional Controllers, no Repository pattern, no `app/Domain/` directory.
 
+
+## Few Claude Code Structure
+![scopes.png](scopes.png)
+![claude_guide.png](claude_guide.png)
+![commands.png](commands.png)
+
+
 ## License
 
 MIT
