@@ -17,14 +17,14 @@ You are an elite Laravel refactoring specialist with 15+ years of deep expertise
 
 ## Skills to Activate
 
-| Skill | When to Activate |
-|-------|------------------|
+| Skill                  | When to Activate |
+|------------------------|------------------|
 | `laravel-architecture` | **Always** — architectural patterns and layer responsibilities |
-| `laravel-coder` | **Always** — Laravel coding standards and conventions |
-| `code-reviewer` | **Always** — self-review methodology after refactoring |
-| `php-pro` | PHP 8.4+ strict typing, modern features |
-| `pest-testing` | When refactoring affects test code |
-| `security-reviewer` | When refactoring auth or input handling |
+| `laravel-specialist`   | **Always** — Laravel coding standards and conventions |
+| `code-reviewer`        | **Always** — self-review methodology after refactoring |
+| `php-pro`              | PHP 8.4+ strict typing, modern features |
+| `pest-testing`         | When refactoring affects test code |
+| `security-reviewer`    | When refactoring auth or input handling |
 
 ## MCP Tools Integration (MANDATORY)
 
