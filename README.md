@@ -8,28 +8,28 @@ A comprehensive, production-ready Claude Code configuration for Laravel + Inerti
 
 ### Agents (18)
 
-Specialized AI agents that handle different aspects of development:
+Specialized AI agents that handle different aspects of development. Each agent has an explicit `tools:` list in its frontmatter — only the tools it actually needs (principle of least privilege).
 
-| Agent | Purpose | Model |
-|-------|---------|-------|
-| `ba` | Business analysis, requirements, user stories | opus |
-| `ci-cd-engineer` | GitHub Actions, CI/CD pipelines | sonnet |
-| `dba` | Database design, migrations, query optimization | sonnet |
-| `ddd-architect` | Domain modeling, business logic placement | opus |
-| `debugger` | Bug investigation, root-cause analysis | sonnet |
-| `developer` | Full-stack Laravel + Inertia.js features | opus |
-| `devil` | Devil's advocate in planning phase, challenges requirements and architecture | opus |
-| `devops` | Docker, deployment, infrastructure | sonnet |
-| `docs-writer` | Technical documentation, README, API docs | sonnet |
-| `filament` | Filament v4 admin panel resources | opus |
-| `frontend` | Vue 3 components, Pinia, Tailwind, a11y | opus |
-| `integration-architect` | OAuth, webhooks, third-party services | sonnet |
-| `laravel-refactoring-expert` | Refactoring, N+1 fixes, code quality | opus |
-| `qa` | E2E testing, Playwright, visual regression | opus |
-| `queue-specialist` | Redis queues, jobs, async processing | sonnet |
-| `reviewer` | Code review, architecture audit | opus |
-| `security-scanner` | OWASP, auth/authz, credential leaks | opus |
-| `tester` | Unit/feature tests, Pest, mutation testing | opus |
+| Agent | Purpose | Model | Write? | Key extras |
+|-------|---------|-------|--------|------------|
+| `ba` | Business analysis, requirements, user stories | opus | — | Web, Context7, Agent |
+| `ci-cd-engineer` | GitHub Actions, CI/CD pipelines | sonnet | + | GitHub MCP |
+| `dba` | Database design, migrations, query optimization | sonnet | + | — |
+| `ddd-architect` | Domain modeling, business logic placement | opus | — | Context7, Agent |
+| `debugger` | Bug investigation, root-cause analysis | sonnet | + | — |
+| `developer` | Full-stack Laravel + Inertia.js features | opus | + | Context7, Figma, IDE, Agent |
+| `devil` | Devil's advocate in planning phase, challenges requirements and architecture | opus | — | SendMessage only |
+| `devops` | Docker, deployment, infrastructure | sonnet | + | — |
+| `docs-writer` | Technical documentation, README, API docs | sonnet | + | GitHub MCP |
+| `filament` | Filament v4 admin panel resources | opus | + | Context7 |
+| `frontend` | Vue 3 components, Pinia, Tailwind, a11y | opus | + | Context7, Figma, Stitch, IDE |
+| `integration-architect` | OAuth, webhooks, third-party services | sonnet | + | Web, Context7 |
+| `laravel-refactoring-expert` | Refactoring, N+1 fixes, code quality | opus | + | — |
+| `qa` | E2E testing, Playwright, visual regression | opus | + | All 21 Playwright tools |
+| `queue-specialist` | Redis queues, jobs, async processing | sonnet | + | — |
+| `reviewer` | Code review, architecture audit | opus | — | GitHub MCP (review) |
+| `security-scanner` | OWASP, auth/authz, credential leaks | opus | — | Web (CVE lookup) |
+| `tester` | Unit/feature tests, Pest, mutation testing | opus | + | — |
 
 ### Rules (5)
 
@@ -181,12 +181,26 @@ name: my-agent
 description: "What this agent does. Trigger words — EN: keyword1, keyword2. Trigger words — UA: слово1, слово2."
 model: sonnet
 color: blue
+tools:
+  - Read
+  - Glob
+  - Grep
+  - Edit
+  - Write
+  - Bash
+  - SendMessage
 ---
 
 # Agent Title
 
 Instructions for the agent...
 ```
+
+Always define `tools:` explicitly — agents inherit ALL tools from the conversation if the field is omitted. Grant only what the agent needs:
+- Read-only agents (analysts, auditors): omit `Edit`, `Write`, `Bash`
+- Agents that don't call external services: omit MCP tools
+- `qa` is the only agent that should get Playwright MCP tools
+- `reviewer`, `ci-cd-engineer`, `docs-writer` are the only agents that need GitHub MCP
 
 ### Add a New Rule
 
