@@ -1,12 +1,12 @@
 # Claude Code Configuration for Laravel Projects
 
-A comprehensive, production-ready Claude Code configuration for Laravel + Inertia.js + Vue 3 projects. Includes 17 specialized agents, 5 rule files, 27 skills, and a structured workflow pipeline that turns Claude Code into a full AI development team.
+A comprehensive, production-ready Claude Code configuration for Laravel + Inertia.js + Vue 3 projects. Includes 18 specialized agents, 5 rule files, 27 skills, and a structured workflow pipeline that turns Claude Code into a full AI development team.
 
 **Stack:** PHP 8.4 · Laravel 12 · Vue 3 · Inertia.js v2 · PostgreSQL 17 · Redis · Docker · Pest 4
 
 ## What's Included
 
-### Agents (17)
+### Agents (18)
 
 Specialized AI agents that handle different aspects of development:
 
@@ -17,7 +17,8 @@ Specialized AI agents that handle different aspects of development:
 | `dba` | Database design, migrations, query optimization | sonnet |
 | `ddd-architect` | Domain modeling, business logic placement | opus |
 | `debugger` | Bug investigation, root-cause analysis | sonnet |
-| `developer` | Full-stack Laravel + Inertia.js features | sonnet |
+| `developer` | Full-stack Laravel + Inertia.js features | opus |
+| `devil` | Devil's advocate in planning phase, challenges requirements and architecture | opus |
 | `devops` | Docker, deployment, infrastructure | sonnet |
 | `docs-writer` | Technical documentation, README, API docs | sonnet |
 | `filament` | Filament v4 admin panel resources | opus |
@@ -67,13 +68,14 @@ Reusable knowledge modules organized by category:
 The configuration defines a mandatory agent pipeline for feature development:
 
 ```
-Standard Feature:  BA → Developer → Security Scanner → QA → Tester → DocsWriter
-Architecture:      BA → DDD Architect → Developer → Security → QA → Tester → DocsWriter
-Bug Fix:           Debugger → Developer → Tester
-CI/CD:             DevOps / CI-CD Engineer
+Standard Feature:  Planning Team → Developer → Quality Gate Team → DocsWriter
+Bug Fix:           Debugger → Developer → Verify Team
+CI/CD:             DevOps / CI-CD Engineer → Reviewer + Security Scanner
 ```
 
-Independent steps run in parallel automatically (e.g., Security + QA + Tester after Developer).
+**Planning Team** (`plan-{slug}`) runs `ba`, `ddd-architect`, and `devil` in parallel. `devil` is a read-only devil's advocate that challenges requirements and architecture decisions via SendMessage before any code is written. For simple features with no arch decisions, `ba` runs sequentially alone.
+
+**Quality Gate Team** (`qg-{slug}`) runs `tester`, `reviewer`, `security-scanner`, and `qa` in parallel via TeamCreate. If any agent reports a Critical or Important issue, findings route back to Developer and the team reruns.
 
 ## Prerequisites
 
@@ -97,6 +99,8 @@ cp /tmp/claude-laravel-config/CLAUDE.md /path/to/your-laravel-project/
 ```
 
 Or add as a git subtree/submodule if you prefer to track updates.
+
+> **Agent Teams**: `settings.json` already includes `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` which enables parallel Quality Gate and Verify Team execution. This is an experimental feature — requires Claude Code with agent teams support.
 
 ### Step 2: Install Superpowers Plugin
 
