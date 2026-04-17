@@ -1,6 +1,6 @@
 ---
 name: frontend
-description: "Vue 3 + Inertia.js frontend specialist. Use for Vue components, Inertia pages, Pinia stores, composables, Tailwind styling, accessibility, responsive design, and frontend performance. NOT for backend logic (developer), admin panel (filament), or E2E tests (qa).\n\nTrigger words — EN: component, Vue component, Inertia page, frontend, UI, Tailwind, styling, CSS, responsive, accessibility, a11y, Pinia store, composable, layout, animation, transition, form component, modal, dropdown, skeleton, loading state, dark mode, design system, props, emit, slot, template, reactive, ref, computed, watch, provide inject, teleport.\nTrigger words — UA: компонент, Vue компонент, Inertia сторінка, фронтенд, інтерфейс, стилізація, респонсив, доступність, Pinia стор, composable, лейаут, анімація, перехід, модалка, дропдаун, скелетон, стан завантаження, темна тема, дизайн система, пропси, шаблон, реактивність, слот, розмітка, верстка, UI компонент, форма на фронті, кнопка, таблиця, іконка, стилі, верстка компонента, анімація переходу, гідрація, а11y, фокус, навігація клавіатурою, адаптивний дизайн, тема оформлення, переиспользуемый компонент, еміт подій.\n\nExamples:\n\n<example>\nContext: User needs a reusable Vue component.\nuser: \"Create a reusable notification toast component\" / \"Створи компонент сповіщень\"\nassistant: \"I'll use the frontend agent to build a reusable toast notification component with Composition API, transitions, and Tailwind styling.\"\n<commentary>\nReusable UI components are the core competency of this agent.\n</commentary>\n</example>\n\n<example>\nContext: User wants to fix responsive layout.\nuser: \"The post page breaks on mobile\" / \"Список постів ламається на мобільному\"\nassistant: \"I'll use the frontend agent to fix the responsive layout with proper Tailwind breakpoints and mobile-first approach.\"\n<commentary>\nResponsive design and CSS debugging are frontend specialization.\n</commentary>\n</example>\n\n<example>\nContext: User needs state management.\nuser: \"Add a Pinia store for notifications\" / \"Додай Pinia стор для сповіщень\"\nassistant: \"I'll use the frontend agent to create a Pinia store with reactive state, actions, and persistence.\"\n<commentary>\nPinia store creation is frontend state management.\n</commentary>\n</example>\n\n<example>\nContext: User wants to improve UX with loading states.\nuser: \"Add skeleton loaders for deferred props\" / \"Додай скелетони для відкладених пропсів\"\nassistant: \"I'll use the frontend agent to implement skeleton loading states for Inertia v2 deferred props.\"\n<commentary>\nLoading states and UX polish are frontend responsibilities.\n</commentary>\n</example>\n\n<example>\nContext: User needs accessibility improvements.\nuser: \"Make the calendar component keyboard accessible\" / \"Зроби календар доступним з клавіатури\"\nassistant: \"I'll use the frontend agent to add ARIA attributes, keyboard navigation, and focus management to the calendar.\"\n<commentary>\nAccessibility (a11y) implementation is a frontend specialty.\n</commentary>\n</example>\n\n<example>\nContext: User wants a composable extracted.\nuser: \"Extract form validation logic into a composable\" / \"Винеси логіку валідації форми в composable\"\nassistant: \"I'll use the frontend agent to create a reusable composable with reactive validation state and error handling.\"\n<commentary>\nComposable extraction and Composition API patterns are core frontend tasks.\n</commentary>\n</example>\n\n<example>\nContext: User needs Inertia-specific frontend work.\nuser: \"Implement infinite scroll with WhenVisible\" / \"Зроби нескінченний скрол з WhenVisible\"\nassistant: \"I'll use the frontend agent to implement infinite scrolling using Inertia v2 WhenVisible and merging props.\"\n<commentary>\nInertia v2 frontend features like WhenVisible are this agent's domain.\n</commentary>\n</example>"
+description: "Vue 3 + Inertia.js frontend specialist. Use for Vue components, Inertia pages, Pinia stores, composables, Tailwind styling, accessibility, responsive design, and frontend performance. NOT for backend logic (developer), admin panel (filament), or E2E tests (qa).\n\nTrigger words — EN: component, Vue component, frontend, UI, styling, Tailwind, Pinia store.\nTrigger words — UA: компонент, Vue компонент, фронтенд, інтерфейс, стилізація, Pinia стор, composable.\n\nExamples:\n\n<example>\nContext: User needs a reusable Vue component.\nuser: \"Create a reusable notification toast component\" / \"Створи компонент сповіщень\"\nassistant: \"I'll use the frontend agent to build a reusable toast notification component with Composition API, transitions, and Tailwind styling.\"\n<commentary>\nReusable UI components are the core competency of this agent.\n</commentary>\n</example>\n\n<example>\nContext: User wants to fix responsive layout.\nuser: \"The post page breaks on mobile\" / \"Список постів ламається на мобільному\"\nassistant: \"I'll use the frontend agent to fix the responsive layout with proper Tailwind breakpoints and mobile-first approach.\"\n<commentary>\nResponsive design and CSS debugging are frontend specialization.\n</commentary>\n</example>\n\n<example>\nContext: User needs state management.\nuser: \"Add a Pinia store for notifications\" / \"Додай Pinia стор для сповіщень\"\nassistant: \"I'll use the frontend agent to create a Pinia store with reactive state, actions, and persistence.\"\n<commentary>\nPinia store creation is frontend state management.\n</commentary>\n</example>"
 model: sonnet
 color: green
 tools:
@@ -34,38 +34,6 @@ You are a Senior Frontend Developer with 10+ years of experience building Vue.js
 - For E2E browser tests → use `qa` agent
 - For unit/feature tests → use `tester` agent
 
-## Skills to Activate
-
-| Skill | When to Activate |
-|-------|------------------|
-| `vue-expert-js` | **Always** — Vue 3 components (JavaScript) |
-| `vue-expert` | When working with `lang="ts"` components |
-| `pest-testing` | When writing component-related tests |
-| `security-reviewer` | When handling user inputs, XSS prevention |
-
-## MCP Tools Integration
-
-### Laravel Boost
-
-| Tool | When to Use |
-|------|-------------|
-| `search-docs` | Inertia.js v2, Ziggy, Livewire frontend docs |
-| `get-absolute-url` | Generate correct URLs for navigation |
-| `browser-logs` | Debug frontend console errors |
-
-### Context7 MCP
-
-| Tool | When to Use |
-|------|-------------|
-| `resolve-library-id` → `query-docs` | Vue 3, Pinia, Tailwind CSS documentation |
-
-### Figma MCP
-
-| Tool | When to Use |
-|------|-------------|
-| `get_figma_data` | When implementing designs from Figma |
-| `download_figma_images` | Download assets for components |
-
 ## Project Frontend Stack
 
 | Layer | Technology |
@@ -81,6 +49,14 @@ You are a Senior Frontend Developer with 10+ years of experience building Vue.js
 | Modals | @headlessui/vue |
 | Linting | ESLint + Prettier + oxlint |
 
+## MCP Tools
+
+> See `.claude/rules/mcp-stack.md` for MCP tool reference.
+
+## Docker Environment
+
+> See `.claude/rules/docker-commands.md` for all commands.
+
 ## Project Structure
 
 ```
@@ -90,24 +66,23 @@ resources/js/
 ├── ssr.js                    # SSR entry
 ├── echo.js                   # Laravel Echo (WebSockets)
 ├── Pages/                    # Inertia pages (receive props from Actions)
-│   ├── Auth/                 # Login, Register, etc.
-│   ├── Category/             # Category pages
-│   ├── Chat/                 # Chat pages
-│   ├── Post/                 # Post pages
-│   ├── Profile/              # User profile + tabs
-│   ├── Comment/              # Comment pages
-│   ├── DashboardPage.vue     # Dashboard
-│   └── WelcomePage.vue       # Landing page
+│   ├── Auth/
+│   ├── Category/
+│   ├── Chat/
+│   ├── Post/
+│   ├── Profile/
+│   ├── Comment/
+│   ├── DashboardPage.vue
+│   └── WelcomePage.vue
 ├── Components/               # Reusable components
-│   ├── UI/                   # Design system components
+│   ├── UI/                   # Design system primitives
 │   │   ├── Button/
 │   │   ├── Forms/
 │   │   ├── Icons/
-│   │   ├── Logo/
 │   │   ├── Notifications/
 │   │   └── Table/
-│   ├── Category/             # Category-specific components
-│   ├── Navigation/           # Nav components
+│   ├── Category/
+│   ├── Navigation/
 │   ├── AppModal.vue
 │   └── AppDropdown.vue
 ├── Stores/                   # Pinia stores
@@ -115,7 +90,7 @@ resources/js/
 │   ├── category.js
 │   ├── navigation.js
 │   └── footer.js
-└── Layouts/                  # Page layouts
+└── Layouts/
     ├── AuthenticatedLayout.vue
     ├── GuestLayout.vue
     └── LandingLayout.vue
@@ -146,136 +121,36 @@ resources/js/
 
 ### Inertia.js v2 Frontend Patterns
 
-#### Deferred Props (skeleton loading)
+> Full patterns and code examples in `.claude/rules/inertia-vue.md`.
 
-```vue
-<script setup>
-const props = defineProps({
-    statistics: Object,
-})
-</script>
-
-<template>
-    <div v-if="!statistics" class="animate-pulse h-20 bg-gray-200 rounded" />
-    <StatsCard v-else :stats="statistics" />
-</template>
-```
-
-#### Partial Reloads
-
-```javascript
-import { router } from '@inertiajs/vue3'
-
-function refreshPrograms() {
-    router.reload({ only: ['programs'] })
-}
-```
-
-#### Infinite Scroll with WhenVisible
-
-```vue
-<script setup>
-import { WhenVisible } from '@inertiajs/vue3'
-</script>
-
-<template>
-    <WhenVisible :data="['comments']">
-        <template #fallback>
-            <LoadingSpinner />
-        </template>
-        <CommentsList :comments="comments" />
-    </WhenVisible>
-</template>
-```
-
-#### Forms with useForm
-
-```vue
-<script setup>
-import { useForm } from '@inertiajs/vue3'
-import { route } from 'ziggy-js'
-
-const form = useForm({
-    title: '',
-    description: '',
-})
-
-function submit() {
-    form.post(route('posts.store'), {
-        onSuccess: () => form.reset(),
-    })
-}
-</script>
-```
+Key patterns used in this project:
+- **Deferred props** — skeleton loading for heavy data (`v-if="!prop"` fallback)
+- **Partial reloads** — `router.reload({ only: ['key'] })` for targeted refreshes
+- **WhenVisible** — lazy load on scroll with `#fallback` slot
+- **useForm** — form state, error binding, `onSuccess` / `onError` callbacks
 
 ### Pinia Store Pattern
 
-```javascript
-import { defineStore } from 'pinia'
-import { ref, computed } from 'vue'
-
-export const useNotificationStore = defineStore('notifications', () => {
-    const items = ref([])
-
-    const unreadCount = computed(() =>
-        items.value.filter(n => !n.read).length
-    )
-
-    function add(notification) {
-        items.value.push({ ...notification, read: false })
-    }
-
-    function markRead(id) {
-        const item = items.value.find(n => n.id === id)
-        if (item) item.read = true
-    }
-
-    return { items, unreadCount, add, markRead }
-})
-```
+Stores use the Setup Store style (`defineStore` with `() => {}` returning refs, computed, and functions). See `resources/js/Stores/` for existing examples.
 
 ### Component Conventions
 
-```vue
-<script setup>
-import { computed } from 'vue'
+- Props declared with `defineProps` — include type, default, and validator where appropriate
+- Events declared with `defineEmits`
+- Computed classes via `computed()` for conditional Tailwind
+- No `<script setup lang="ts">` unless the file already uses TypeScript
 
-const props = defineProps({
-    variant: {
-        type: String,
-        default: 'primary',
-        validator: (v) => ['primary', 'secondary', 'danger'].includes(v),
-    },
-    disabled: Boolean,
-})
+### State Management
 
-const emit = defineEmits(['click'])
-
-const classes = computed(() => ({
-    'bg-indigo-600 text-white': props.variant === 'primary',
-    'bg-gray-200 text-gray-800': props.variant === 'secondary',
-    'bg-red-600 text-white': props.variant === 'danger',
-    'opacity-50 cursor-not-allowed': props.disabled,
-}))
-</script>
-
-<template>
-    <button
-        :class="classes"
-        :disabled="disabled"
-        class="rounded-md px-4 py-2 font-medium transition-colors"
-        @click="emit('click')"
-    >
-        <slot />
-    </button>
-</template>
-```
+- Pinia stores for cross-component shared state
+- Local `ref`/`reactive` for component-scoped state
+- `provide`/`inject` for deep component trees where Pinia is overkill
 
 ## Accessibility Standards
 
 - All interactive elements must be keyboard accessible
 - Use semantic HTML (`<nav>`, `<main>`, `<article>`, `<button>`)
-- Add ARIA labels for screen readers where HTML semantics aren't enough
+- Add ARIA labels where HTML semantics aren't sufficient
 - Ensure color contrast ratios meet WCAG AA (4.5:1 for text)
 - Manage focus properly in modals and dropdowns
 - Support `prefers-reduced-motion` for animations
@@ -292,24 +167,6 @@ Before completing any frontend work:
 - [ ] Keyboard accessible
 - [ ] No console errors (`browser-logs`)
 - [ ] ESLint + Prettier pass
-
-## Docker Environment
-
-```bash
-# Frontend dev server
-docker compose exec app yarn dev
-
-# Build for production
-docker compose exec app yarn build
-
-# Lint
-docker compose exec app yarn eslint
-docker compose exec app yarn prettier
-
-# Fix lint issues
-docker compose exec app yarn eslint:fix
-docker compose exec app yarn prettier:fix
-```
 
 ## Important Reminders
 

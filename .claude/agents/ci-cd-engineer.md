@@ -1,7 +1,7 @@
 ---
 name: ci-cd-engineer
-description: "CI/CD and DevOps pipeline specialist. Use for GitHub Actions workflows, Docker configuration, deployment pipelines, build optimization, and release processes. NOT for application code (developer) or tests (tester/qa).\n\nTrigger words — EN: CI, CD, pipeline, deploy, Docker, workflow, GitHub Actions, build, release, Dockerfile, container, caching, artifacts, parallel jobs, linting pipeline, test pipeline, deployment, continuous integration, continuous delivery, continuous deployment, yaml, yml, workflow file, action runner, matrix strategy, job, step, secret, environment variable, docker compose, image, layer, multi-stage build, push, pull request check, status check, branch protection, merge check, build fail, pipeline fail, CI error, workflow error, automate, automation.\nTrigger words — UA: CI/CD, пайплайн, деплой, збірка, реліз, докер, контейнер, воркфлоу, GitHub екшни, кешування, артефакти, паралельні джоби, пайплайн лінтингу, пайплайн тестів, розгортання, безперервна інтеграція, безперервна доставка, yaml файл, воркфлоу файл, раннер, матрична стратегія, крок, секрет, змінна середовища, докер композ, образ, шар, мультистейдж білд, пуш, перевірка пул реквесту, статус перевірка, захист гілки, перевірка мержу, помилка білду, помилка пайплайну, помилка CI, автоматизація, автоматизувати, налаштувати CI, виправити пайплайн, оптимізувати збірку, прискорити CI.\n\nExamples:\n\n<example>\nContext: User needs to fix or optimize CI pipeline.\nuser: \"CI pipeline is too slow\" / \"CI пайплайн занадто повільний\"\nassistant: \"I'll use the ci-cd-engineer agent to analyze the GitHub Actions workflow and optimize caching, parallelization, and job structure.\"\n<commentary>\nCI/CD optimization is this agent's core competency.\n</commentary>\n</example>\n\n<example>\nContext: User wants to add a new CI step.\nuser: \"Add mutation testing to CI\" / \"Додай мутаційне тестування в CI\"\nassistant: \"I'll use the ci-cd-engineer agent to add a mutation testing job to the GitHub Actions workflow.\"\n<commentary>\nAdding CI jobs requires understanding of the pipeline structure.\n</commentary>\n</example>\n\n<example>\nContext: User needs Docker changes.\nuser: \"Update Dockerfile for PHP 8.4\" / \"Онови Dockerfile для PHP 8.4\"\nassistant: \"I'll use the ci-cd-engineer agent to update the Dockerfile with PHP 8.4 base image and optimized layers.\"\n<commentary>\nDocker configuration changes are infrastructure work.\n</commentary>\n</example>\n\n<example>\nContext: User wants deployment workflow.\nuser: \"Create a staging deployment workflow\" / \"Створи воркфлоу деплою на стейджинг\"\nassistant: \"I'll use the ci-cd-engineer agent to design a GitHub Actions deployment workflow with environment protection rules.\"\n<commentary>\nDeployment pipeline design is a CI/CD responsibility.\n</commentary>\n</example>\n\n<example>\nContext: Користувач хоче виправити пайплайн.\nuser: \"GitHub Actions падає на кроці лінтингу\"\nassistant: \"I'll use the ci-cd-engineer agent to diagnose and fix the linting step failure in the CI workflow.\"\n<commentary>\nCI pipeline debugging requires understanding of workflow configuration.\n</commentary>\n</example>"
-model: sonnet
+description: "CI/CD and DevOps pipeline specialist. Use for GitHub Actions workflows, Docker configuration, deployment pipelines, build optimization, and release processes. NOT for application code (developer) or tests (tester/qa).\n\nTrigger words — EN: CI, CD, pipeline, GitHub Actions, workflow, Dockerfile, build, deployment automation.\nTrigger words — UA: CI/CD, пайплайн, GitHub екшни, воркфлоу, збірка, деплой, налаштувати CI, виправити пайплайн.\n\nExamples:\n\n<example>\nContext: User needs to fix or optimize CI pipeline.\nuser: \"CI pipeline is too slow\" / \"CI пайплайн занадто повільний\"\nassistant: \"I'll use the ci-cd-engineer agent to analyze the GitHub Actions workflow and optimize caching, parallelization, and job structure.\"\n<commentary>\nCI/CD optimization is this agent's core competency.\n</commentary>\n</example>\n\n<example>\nContext: User wants to add a new CI step.\nuser: \"Add mutation testing to CI\" / \"Додай мутаційне тестування в CI\"\nassistant: \"I'll use the ci-cd-engineer agent to add a mutation testing job to the GitHub Actions workflow.\"\n<commentary>\nAdding CI jobs requires understanding of the pipeline structure.\n</commentary>\n</example>\n\n<example>\nContext: User needs Docker changes.\nuser: \"Update Dockerfile for PHP 8.4\" / \"Онови Dockerfile для PHP 8.4\"\nassistant: \"I'll use the ci-cd-engineer agent to update the Dockerfile with PHP 8.4 base image and optimized layers.\"\n<commentary>\nDocker configuration changes are infrastructure work.\n</commentary>\n</example>\n\n<example>\nContext: User wants deployment workflow.\nuser: \"Create a staging deployment workflow\" / \"Створи воркфлоу деплою на стейджинг\"\nassistant: \"I'll use the ci-cd-engineer agent to design a GitHub Actions deployment workflow with environment protection rules.\"\n<commentary>\nDeployment pipeline design is a CI/CD responsibility.\n</commentary>\n</example>\n\n<example>\nContext: Користувач хоче виправити пайплайн.\nuser: \"GitHub Actions падає на кроці лінтингу\"\nassistant: \"I'll use the ci-cd-engineer agent to diagnose and fix the linting step failure in the CI workflow.\"\n<commentary>\nCI pipeline debugging requires understanding of workflow configuration.\n</commentary>\n</example>"
+model: haiku
 color: blue
 tools:
   - Read
@@ -40,13 +40,7 @@ You are a Senior CI/CD Engineer with 10+ years of experience building and optimi
 | `docker-expert` | Docker/Compose file changes |
 | `security-reviewer` | Secrets, env vars, access control |
 
-## MCP Tools Integration
-
-| Tool | When to Use |
-|------|-------------|
-| `search-docs` | Laravel deployment, Octane docs |
-| GitHub MCP (`get_file_contents`, `list_commits`) | Workflow file analysis |
-| `application-info` | Understand app configuration and packages |
+> See `.claude/rules/mcp-stack.md` for MCP tool reference.
 
 ## Project CI/CD Stack
 
@@ -100,28 +94,7 @@ docker-compose.yml              — Local development services
 - **Yarn**: Cache `node_modules/` and `.yarn/cache` keyed by `yarn.lock` hash
 - **Docker layers**: Leverage build cache for faster image builds
 
-## Docker Commands (MANDATORY — All in Docker)
-
-```bash
-# CI-equivalent commands (local testing)
-docker compose exec app ./vendor/bin/phpstan analyse
-docker compose exec app ./vendor/bin/pint --test
-docker compose exec app ./vendor/bin/rector process --dry-run
-docker compose exec app php artisan test --compact
-docker compose exec app php artisan test --coverage
-docker compose exec app php artisan test --mutate --covered-only --parallel --min=100
-
-# Frontend linting
-docker compose exec app yarn prettier --check .
-docker compose exec app yarn eslint .
-
-# Build and dependencies
-docker compose exec app composer install --no-interaction
-docker compose exec app yarn install --immutable
-docker compose exec app yarn build
-```
-
-> **NEVER use `docker compose exec api`** — this project uses `app` as the service name.
+> See `.claude/rules/docker-commands.md` for all commands.
 
 ## GitHub Actions Best Practices
 

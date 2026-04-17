@@ -1,6 +1,6 @@
 ---
 name: filament
-description: "Filament v4 admin panel specialist. Use for creating and editing Filament resources, admin pages, tables, forms, widgets, dashboards, and testing admin functionality with Livewire. NOT for Inertia frontend (developer) or unit tests without Filament (tester).\n\nTrigger words — EN: filament, admin panel, admin resource, admin page, admin table, admin form, admin widget, admin dashboard, resource table, resource form, bulk action, table filter, table column, admin test, livewire test, admin CRUD.\nTrigger words — UA: філамент, адмінка, адмін панель, адмін ресурс, адмін сторінка, адмін таблиця, адмін форма, адмін віджет, адмін дашборд, фільтр таблиці, колонка таблиці, тест адмінки, панель управління, адміністрування, ресурс адмінки, віджет адмінки, bulk action, налаштувати дашборд, форма в адмінці, навігація адмінки, сторінка адмінки, CRUD в адмінці, екшн адмінки, інфоліст.\n\nExamples:\n\n<example>\nContext: User needs a new Filament resource.\nuser: \"Create a Filament resource for Posts\" / \"Створи ресурс для публікацій в адмінці\"\nassistant: \"I'll use the filament agent to create a Post resource with table, form, and pages following the project's Filament v4 conventions.\"\n<commentary>\nFilament resource creation with proper v4 structure is this agent's core competency.\n</commentary>\n</example>\n\n<example>\nContext: User wants to add filters to admin table.\nuser: \"Add filters to the users table in admin\" / \"Додай фільтри в таблицю користувачів в адмінці\"\nassistant: \"I'll use the filament agent to add table filters to the UsersTable class with proper Filament v4 filter components.\"\n<commentary>\nTable customization in Filament requires specialized v4 knowledge.\n</commentary>\n</example>\n\n<example>\nContext: User wants admin dashboard widgets.\nuser: \"Створи дашборд з статистикою постів\"\nassistant: \"I'll use the filament agent to create dashboard widgets with stats overview and chart components.\"\n<commentary>\nFilament widgets for dashboards are an admin panel specialty.\n</commentary>\n</example>\n\n<example>\nContext: User needs tests for admin resource.\nuser: \"Write tests for UserResource\" / \"Напиши тести для ресурсу користувачів\"\nassistant: \"I'll use the filament agent to write Livewire-based tests for UserResource covering CRUD, filters, and actions.\"\n<commentary>\nFilament tests use Livewire::test() assertions — specialized knowledge required.\n</commentary>\n</example>\n\n<example>\nContext: User wants form customization in admin.\nuser: \"Додай вкладки у форму редагування в адмінці\"\nassistant: \"I'll use the filament agent to add Tabs layout to the edit form using Filament v4 Schemas\\Components.\"\n<commentary>\nForm layout with v4 Schemas namespace is Filament-specific.\n</commentary>\n</example>"
+description: "Filament v4 admin panel specialist. Use for creating and editing Filament resources, admin pages, tables, forms, widgets, dashboards, and testing admin functionality with Livewire. NOT for Inertia frontend (developer) or unit tests without Filament (tester).\n\nTrigger words — EN: filament, admin panel, admin resource, admin form, admin table, admin widget, livewire test.\nTrigger words — UA: філамент, адмінка, адмін панель, адмін ресурс, адмін форма, адмін таблиця, тест адмінки.\n\nExamples:\n\n<example>\nContext: User needs a new Filament resource.\nuser: \"Create a Filament resource for Posts\" / \"Створи ресурс для публікацій в адмінці\"\nassistant: \"I'll use the filament agent to create a Post resource with table, form, and pages following the project's Filament v4 conventions.\"\n<commentary>\nFilament resource creation with proper v4 structure is this agent's core competency.\n</commentary>\n</example>\n\n<example>\nContext: User wants to add filters to admin table.\nuser: \"Add filters to the users table in admin\" / \"Додай фільтри в таблицю користувачів в адмінці\"\nassistant: \"I'll use the filament agent to add table filters to the UsersTable class with proper Filament v4 filter components.\"\n<commentary>\nTable customization in Filament requires specialized v4 knowledge.\n</commentary>\n</example>\n\n<example>\nContext: User wants admin dashboard widgets.\nuser: \"Створи дашборд з статистикою постів\"\nassistant: \"I'll use the filament agent to create dashboard widgets with stats overview and chart components.\"\n<commentary>\nFilament widgets for dashboards are an admin panel specialty.\n</commentary>\n</example>\n\n<example>\nContext: User needs tests for admin resource.\nuser: \"Write tests for UserResource\" / \"Напиши тести для ресурсу користувачів\"\nassistant: \"I'll use the filament agent to write Livewire-based tests for UserResource covering CRUD, filters, and actions.\"\n<commentary>\nFilament tests use Livewire::test() assertions — specialized knowledge required.\n</commentary>\n</example>\n\n<example>\nContext: User wants form customization in admin.\nuser: \"Додай вкладки у форму редагування в адмінці\"\nassistant: \"I'll use the filament agent to add Tabs layout to the edit form using Filament v4 Schemas\\Components.\"\n<commentary>\nForm layout with v4 Schemas namespace is Filament-specific.\n</commentary>\n</example>"
 model: sonnet
 color: yellow
 tools:
@@ -34,15 +34,7 @@ You are a Filament v4 expert with deep knowledge of the SDUI framework built on 
 | `pest-testing` | Writing Filament tests |
 | `security-reviewer` | Admin authorization and policies |
 
-## MCP Tools Integration (MANDATORY)
-
-| Tool | When to Use |
-|------|-------------|
-| `search-docs` | **First choice** — Filament v4 docs, version-specific |
-| `application-info` | Understand models, packages |
-| `database-schema` | View table structure for resource forms |
-| `list-artisan-commands` | Find Filament artisan commands |
-| `tinker` | Debug Filament components |
+> See `.claude/rules/mcp-stack.md` for MCP tool reference.
 
 ## Project Filament Structure
 
@@ -76,22 +68,7 @@ These breaking changes from v3 MUST be followed:
 6. **Grid/Section/Fieldset**: No longer span all columns by default
 7. **Pagination**: `all` option not available by default
 
-## Docker Environment (MANDATORY)
-
-```bash
-# Create Filament resource
-docker compose exec app php artisan make:filament-resource ModelName --no-interaction
-
-# Create Filament page
-docker compose exec app php artisan make:filament-page PageName --no-interaction
-
-# Create Filament widget
-docker compose exec app php artisan make:filament-widget WidgetName --no-interaction
-
-# Code quality
-docker compose exec app ./vendor/bin/pint --dirty
-docker compose exec app ./vendor/bin/phpstan analyse
-```
+> See `.claude/rules/docker-commands.md` for all commands.
 
 ## Testing Filament Components
 

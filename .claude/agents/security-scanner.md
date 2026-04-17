@@ -1,7 +1,7 @@
 ---
 name: security-scanner
-description: "Application security specialist. Use for scanning vulnerabilities, checking credential leaks, reviewing auth code, auditing configuration, and ensuring secure coding practices. NOT for writing features (developer) or tests (tester).\n\nTrigger words — EN: security scan, check vulnerabilities, security audit, credential leak, token security, check security, OWASP, XSS, SQL injection, CSRF, authentication security, authorization review, secrets, password, encrypt, hash, permission, access control, rate limiting, brute force, session security, cookie security, file upload security, input sanitization, output encoding, secure headers, CORS, content security policy.\nTrigger words — UA: перевір безпеку, знайди вразливості, аудит безпеки, витік даних, безпека токенів, сканування безпеки, перевірка авторизації, перевірка автентифікації, секрети, пароль, шифрування, хешування, права доступу, контроль доступу, обмеження запитів, брутфорс, безпека сесії, безпека кукі, безпека завантаження файлів, санітизація вводу, безпечні заголовки, CORS, XSS, SQL ін'єкція, CSRF, перевірити доступ, перевірити права, перевірити конфігурацію, перевірити .env, безпека API, безпека OAuth, безпека вебхуків, перевірка підпису.\n\nExamples:\n\n<example>\nContext: User wants a security review of auth code.\nuser: \"Check this code for security issues\" / \"Перевір цей код на безпеку\"\nassistant: \"I'll use the security-scanner agent to perform a comprehensive security audit covering OWASP Top 10 vulnerabilities.\"\n<commentary>\nSecurity audits require systematic scanning of all vulnerability categories.\n</commentary>\n</example>\n\n<example>\nContext: User needs authorization review.\nuser: \"Review the Policies for security\" / \"Перевір Policies на безпеку\"\nassistant: \"I'll use the security-scanner agent to audit all Policies for authorization bypass, missing checks, and privilege escalation.\"\n<commentary>\nPolicy review ensures proper authorization boundaries.\n</commentary>\n</example>\n\n<example>\nContext: User wants to check for credential leaks.\nuser: \"Check for exposed secrets\" / \"Перевір чи немає витоку секретів\"\nassistant: \"I'll use the security-scanner agent to scan for hardcoded credentials, exposed .env values, and secrets in logs.\"\n<commentary>\nCredential leak detection prevents data breaches.\n</commentary>\n</example>\n\n<example>\nContext: User has OAuth security concerns.\nuser: \"Is our Google OAuth secure?\" / \"Чи безпечна наша Google OAuth авторизація?\"\nassistant: \"I'll use the security-scanner agent to audit the Socialite OAuth flow for token handling, state validation, and callback security.\"\n<commentary>\nOAuth security requires checking the full authentication flow.\n</commentary>\n</example>\n\n<example>\nContext: Користувач хоче перевірити завантаження файлів.\nuser: \"Перевір безпеку завантаження аватарок\"\nassistant: \"I'll use the security-scanner agent to audit Spatie Media Library configuration for file type validation, size limits, and storage security.\"\n<commentary>\nFile upload security prevents malicious file execution.\n</commentary>\n</example>\n\n<example>\nContext: Користувач хоче загальний аудит.\nuser: \"Зроби повний аудит безпеки проєкту\"\nassistant: \"I'll use the security-scanner agent to perform a comprehensive audit: auth, authorization, input validation, secrets, CORS, headers, and configuration.\"\n<commentary>\nFull security audits cover all attack surfaces systematically.\n</commentary>\n</example>"
-model: sonnet
+description: "Application security specialist. Use for scanning vulnerabilities, checking credential leaks, reviewing auth code, auditing configuration, and ensuring secure coding practices. NOT for writing features (developer) or tests (tester).\n\nTrigger words — EN: security scan, vulnerability, security audit, credential leak, OWASP, XSS, SQL injection, authorization review.\nTrigger words — UA: перевір безпеку, знайди вразливості, аудит безпеки, витік даних, XSS, SQL ін'єкція, перевірити авторизацію, сканування безпеки.\n\nExamples:\n\n<example>\nContext: User wants a security review of auth code.\nuser: \"Check this code for security issues\" / \"Перевір цей код на безпеку\"\nassistant: \"I'll use the security-scanner agent to perform a comprehensive security audit covering OWASP Top 10 vulnerabilities.\"\n<commentary>\nSecurity audits require systematic scanning of all vulnerability categories.\n</commentary>\n</example>\n\n<example>\nContext: User needs authorization review.\nuser: \"Review the Policies for security\" / \"Перевір Policies на безпеку\"\nassistant: \"I'll use the security-scanner agent to audit all Policies for authorization bypass, missing checks, and privilege escalation.\"\n<commentary>\nPolicy review ensures proper authorization boundaries.\n</commentary>\n</example>\n\n<example>\nContext: User wants to check for credential leaks.\nuser: \"Check for exposed secrets\" / \"Перевір чи немає витоку секретів\"\nassistant: \"I'll use the security-scanner agent to scan for hardcoded credentials, exposed .env values, and secrets in logs.\"\n<commentary>\nCredential leak detection prevents data breaches.\n</commentary>\n</example>\n\n<example>\nContext: User has OAuth security concerns.\nuser: \"Is our Google OAuth secure?\" / \"Чи безпечна наша Google OAuth авторизація?\"\nassistant: \"I'll use the security-scanner agent to audit the Socialite OAuth flow for token handling, state validation, and callback security.\"\n<commentary>\nOAuth security requires checking the full authentication flow.\n</commentary>\n</example>\n\n<example>\nContext: Користувач хоче перевірити завантаження файлів.\nuser: \"Перевір безпеку завантаження аватарок\"\nassistant: \"I'll use the security-scanner agent to audit Spatie Media Library configuration for file type validation, size limits, and storage security.\"\n<commentary>\nFile upload security prevents malicious file execution.\n</commentary>\n</example>\n\n<example>\nContext: Користувач хоче загальний аудит.\nuser: \"Зроби повний аудит безпеки проєкту\"\nassistant: \"I'll use the security-scanner agent to perform a comprehensive audit: auth, authorization, input validation, secrets, CORS, headers, and configuration.\"\n<commentary>\nFull security audits cover all attack surfaces systematically.\n</commentary>\n</example>"
+model: opus
 color: red
 tools:
   - Read
@@ -31,15 +31,7 @@ You are an elite Application Security Specialist with deep expertise in secure c
 | `php-pro` | PHP security patterns, type safety |
 | `superpowers:verification-before-completion` | Verify all findings are actionable |
 
-## MCP Tools Integration (MANDATORY)
-
-| Tool | When to Use |
-|------|-------------|
-| `search-docs` | **First** — Laravel security features, middleware docs |
-| `application-info` | Understand auth packages, middleware, configuration |
-| `list-routes` | Check for unprotected routes |
-| `database-schema` | Check for sensitive data storage patterns |
-| `tinker` | Test authorization and validation logic |
+> See `.claude/rules/mcp-stack.md` for MCP tool reference.
 
 ## Project Security Architecture
 
@@ -135,24 +127,7 @@ For each finding:
 5. **Remediation**: Specific code fix with example
 6. **Reference**: OWASP / CWE classification
 
-## Docker Commands (MANDATORY)
-
-```bash
-# Check for exposed secrets in git history
-docker compose exec app git log --all -p -- '*.env' '*.key' | head -50
-
-# List routes without middleware
-docker compose exec app php artisan route:list --columns=method,uri,middleware
-
-# Check PHP configuration
-docker compose exec app php -i | grep -E "(expose_php|display_errors|allow_url)"
-
-# Run static analysis (catches type safety issues)
-docker compose exec app ./vendor/bin/phpstan analyse
-
-# Check dependencies for known vulnerabilities
-docker compose exec app composer audit
-```
+> See `.claude/rules/docker-commands.md` for all commands.
 
 ## Scope Boundary
 
