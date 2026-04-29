@@ -117,3 +117,11 @@ See `rules/_contributing.md` for detailed guidelines. Key principles:
 | LOW-MEDIUM | 1.2-2x | VACUUM tuning, config tweaks |
 | LOW | Incremental | Advanced patterns, edge cases |
 ```
+
+---
+
+<br>
+<p align="center">
+  Built in Ukraine under air raid sirens &amp; blackouts ⚡<br>
+  &copy; 2026 Weby Homelab
+</p>
